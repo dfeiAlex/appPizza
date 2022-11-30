@@ -1,5 +1,47 @@
 ﻿Public Class Form1
-    Private Function isValid() As Boolean
+    Dim boolExtraCheese, boolExtraHam As Boolean
+    Dim strPizzaSize, strPizzaType As String
+    Dim intNumberOfPizzas As Integer
+    Dim dblTotal As Double
+
+    'Dictionary with the key being the input and the value being the cost to be added to the total
+    Dim priceList = New Dictionary(Of String, Double) From {
+        {"Pepperoni", 9.5},
+        {"Ham and Mushroom", 9},
+        {"Vegetarian", 8},
+        {"Special", 11},
+        {"Small", 0},
+        {"Medium", 2},
+        {"Large", 5},
+        {"Extra Cheese", 1},
+        {"Extra Ham", 1.5}
+    }
+
+    'Is run when the make pizza button is pressed, most of the logic originates from here
+    Private Sub makePizza(sender As Object, e As EventArgs) Handles btnMakePizza.Click
+        If orderIsValid() Then
+            'Setting the values for all of the input variables here
+            boolExtraCheese = chkExtraCheese.Checked
+            boolExtraHam = chkExtraHam.Checked
+
+            strPizzaType = cboPizzaType.SelectedItem
+            intNumberOfPizzas = Val(txtAmount.Text)
+
+            Select Case True
+                Case radSmall.Checked
+                    strPizzaSize = radSmall.Text
+                Case radMedium.Checked
+                    strPizzaSize = radMedium.Text
+                Case radLarge.Checked
+                    strPizzaSize = radLarge.Text
+            End Select
+
+            dblTotal = calculatePrice()
+        End If
+    End Sub
+
+    'Check if all necessary inputs have been given
+    Private Function orderIsValid() As Boolean
         'Declare booleans for each of the necessary inputs
         Dim boolPizzaSize, boolPizzaType, boolAmount, boolIsValid As Boolean
         Dim intAmount As Integer = Val(txtAmount.Text)
@@ -12,9 +54,10 @@
         boolIsValid = boolPizzaSize And boolPizzaType And boolAmount
 
         If boolIsValid Then
-            MessageBox.Show("Everything is working.")
+            'MessageBox.Show("Everything is working.") 'Debug
             Return True 'All necessary inputs were given; the order is valid
         Else
+            'Display error message for relevant missing inputs
             Select Case False
                 Case boolPizzaSize
                     MessageBox.Show("Please select a pizza size!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -28,11 +71,24 @@
                     End If
             End Select
 
-            Return False
+            Return False 'Necessary inputs were not given, order cannot be made yet
         End If
     End Function
 
-    Private Sub btnMakePizza_Click(sender As Object, e As EventArgs) Handles btnMakePizza.Click
-        isValid()
-    End Sub
+    Private Function calculatePrice() As Double
+        Dim dblPrice As Double
+
+        'Get cost for pizza type and size
+        dblPrice += priceList(strPizzaType)
+        dblPrice += priceList(strPizzaSize)
+
+        'Check if there are extra toppings. If true add the extra cost, else add nothing
+        dblPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
+        dblPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
+
+        dblPrice *= intNumberOfPizzas
+
+        Console.WriteLine($"Total: {dblPrice}")
+        Return dblPrice
+    End Function
 End Class

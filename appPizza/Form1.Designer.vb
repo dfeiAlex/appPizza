@@ -81,10 +81,10 @@ Partial Class Form1
         Me.radSmall.AutoSize = True
         Me.radSmall.Location = New System.Drawing.Point(6, 19)
         Me.radSmall.Name = "radSmall"
-        Me.radSmall.Size = New System.Drawing.Size(122, 17)
+        Me.radSmall.Size = New System.Drawing.Size(50, 17)
         Me.radSmall.TabIndex = 0
         Me.radSmall.TabStop = True
-        Me.radSmall.Text = "Small Pizza ( 9 inch )"
+        Me.radSmall.Text = "Small"
         Me.radSmall.UseVisualStyleBackColor = True
         '
         'radMedium
@@ -92,10 +92,10 @@ Partial Class Form1
         Me.radMedium.AutoSize = True
         Me.radMedium.Location = New System.Drawing.Point(6, 42)
         Me.radMedium.Name = "radMedium"
-        Me.radMedium.Size = New System.Drawing.Size(112, 17)
+        Me.radMedium.Size = New System.Drawing.Size(62, 17)
         Me.radMedium.TabIndex = 1
         Me.radMedium.TabStop = True
-        Me.radMedium.Text = "Medium ( 12 inch )"
+        Me.radMedium.Text = "Medium"
         Me.radMedium.UseVisualStyleBackColor = True
         '
         'radLarge
@@ -103,10 +103,10 @@ Partial Class Form1
         Me.radLarge.AutoSize = True
         Me.radLarge.Location = New System.Drawing.Point(6, 65)
         Me.radLarge.Name = "radLarge"
-        Me.radLarge.Size = New System.Drawing.Size(102, 17)
+        Me.radLarge.Size = New System.Drawing.Size(52, 17)
         Me.radLarge.TabIndex = 2
         Me.radLarge.TabStop = True
-        Me.radLarge.Text = "Large ( 16 inch )"
+        Me.radLarge.Text = "Large"
         Me.radLarge.UseVisualStyleBackColor = True
         '
         'grpSizes
@@ -330,7 +330,7 @@ Partial Class Form1
         Me.Controls.Add(Me.grpOrderDetails)
         Me.Controls.Add(Me.imgHeader)
         Me.Name = "Form1"
-        Me.Text = "La Mia Pizzaria"
+        Me.Text = "La Mia Pizzeria"
         CType(Me.imgHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSizes.ResumeLayout(False)
         Me.grpSizes.PerformLayout()
