@@ -11,3 +11,16 @@ P:\Programming and Design Principles\Assignments\appPizza\appPizza\obj\Debug\app
 P:\Programming and Design Principles\Assignments\appPizza\appPizza\obj\Debug\appPizza.exe
 P:\Programming and Design Principles\Assignments\appPizza\appPizza\obj\Debug\appPizza.xml
 P:\Programming and Design Principles\Assignments\appPizza\appPizza\obj\Debug\appPizza.pdb
+C:\Users\alex3\source\repos\appPizza\appPizza\bin\Debug\appPizza.exe.config
+C:\Users\alex3\source\repos\appPizza\appPizza\bin\Debug\appPizza.exe
+C:\Users\alex3\source\repos\appPizza\appPizza\bin\Debug\appPizza.pdb
+C:\Users\alex3\source\repos\appPizza\appPizza\bin\Debug\appPizza.xml
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.AssemblyReference.cache
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.SuggestedBindingRedirects.cache
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.Form1.resources
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.Resources.resources
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.GenerateResource.cache
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.CoreCompileInputs.cache
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.exe
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.xml
+C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.pdb
