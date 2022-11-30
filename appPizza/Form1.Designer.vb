@@ -38,15 +38,15 @@ Partial Class Form1
         Me.btnMakePizza = New System.Windows.Forms.Button()
         Me.grpOrderDetails = New System.Windows.Forms.GroupBox()
         Me.grpControls = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblAddNewPizza = New System.Windows.Forms.Label()
         Me.btnNewOrder = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnAddNewPizza = New System.Windows.Forms.Button()
         Me.grpReceipt = New System.Windows.Forms.GroupBox()
         Me.pnlReceipt = New System.Windows.Forms.Panel()
         Me.lblReceipt = New System.Windows.Forms.Label()
-        Me.lblAddNewPizza = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.imgHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSizes.SuspendLayout()
         Me.grpExtraToppings.SuspendLayout()
@@ -171,16 +171,16 @@ Partial Class Form1
         Me.lblAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAmount.Location = New System.Drawing.Point(3, 266)
         Me.lblAmount.Name = "lblAmount"
-        Me.lblAmount.Size = New System.Drawing.Size(92, 13)
+        Me.lblAmount.Size = New System.Drawing.Size(128, 13)
         Me.lblAmount.TabIndex = 4
-        Me.lblAmount.Text = "Number of Pizzas:"
+        Me.lblAmount.Text = "Number of Pizzas (1 - 10):"
         '
         'txtAmount
         '
         Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAmount.Location = New System.Drawing.Point(102, 263)
+        Me.txtAmount.Location = New System.Drawing.Point(137, 263)
         Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(83, 20)
+        Me.txtAmount.Size = New System.Drawing.Size(48, 20)
         Me.txtAmount.TabIndex = 5
         Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -228,6 +228,35 @@ Partial Class Form1
         Me.grpControls.TabIndex = 9
         Me.grpControls.TabStop = False
         Me.grpControls.Text = "Controls"
+        '
+        'Label2
+        '
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(15, 122)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(89, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Create new order"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(15, 75)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(89, 13)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Print receipt"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'lblAddNewPizza
+        '
+        Me.lblAddNewPizza.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddNewPizza.Location = New System.Drawing.Point(15, 29)
+        Me.lblAddNewPizza.Name = "lblAddNewPizza"
+        Me.lblAddNewPizza.Size = New System.Drawing.Size(89, 13)
+        Me.lblAddNewPizza.TabIndex = 3
+        Me.lblAddNewPizza.Text = "Add a new pizza"
         '
         'btnNewOrder
         '
@@ -289,35 +318,6 @@ Partial Class Form1
         Me.lblReceipt.Name = "lblReceipt"
         Me.lblReceipt.Size = New System.Drawing.Size(0, 13)
         Me.lblReceipt.TabIndex = 0
-        '
-        'lblAddNewPizza
-        '
-        Me.lblAddNewPizza.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAddNewPizza.Location = New System.Drawing.Point(15, 29)
-        Me.lblAddNewPizza.Name = "lblAddNewPizza"
-        Me.lblAddNewPizza.Size = New System.Drawing.Size(89, 13)
-        Me.lblAddNewPizza.TabIndex = 3
-        Me.lblAddNewPizza.Text = "Add a new pizza"
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(15, 75)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(89, 13)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Print receipt"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'Label2
-        '
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(15, 122)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 13)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Create new order"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Form1
         '
