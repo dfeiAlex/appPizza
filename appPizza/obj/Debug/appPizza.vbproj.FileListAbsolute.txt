@@ -24,3 +24,16 @@ C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.CoreComp
 C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.exe
 C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.xml
 C:\Users\alex3\source\repos\appPizza\appPizza\obj\Debug\appPizza.pdb
+C:\Users\20221937\Source\Repos\appPizza\appPizza\bin\Debug\appPizza.exe.config
+C:\Users\20221937\Source\Repos\appPizza\appPizza\bin\Debug\appPizza.exe
+C:\Users\20221937\Source\Repos\appPizza\appPizza\bin\Debug\appPizza.pdb
+C:\Users\20221937\Source\Repos\appPizza\appPizza\bin\Debug\appPizza.xml
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.AssemblyReference.cache
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.SuggestedBindingRedirects.cache
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.Form1.resources
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.Resources.resources
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.GenerateResource.cache
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.vbproj.CoreCompileInputs.cache
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.exe
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.xml
+C:\Users\20221937\Source\Repos\appPizza\appPizza\obj\Debug\appPizza.pdb

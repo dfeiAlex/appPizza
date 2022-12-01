@@ -45,6 +45,9 @@ Partial Class Form1
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnAddNewPizza = New System.Windows.Forms.Button()
         Me.grpReceipt = New System.Windows.Forms.GroupBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lblTotal = New System.Windows.Forms.Label()
+        Me.lblTotalText = New System.Windows.Forms.Label()
         Me.pnlReceipt = New System.Windows.Forms.Panel()
         Me.lblReceipt = New System.Windows.Forms.Label()
         CType(Me.imgHeader, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,6 +56,7 @@ Partial Class Form1
         Me.grpOrderDetails.SuspendLayout()
         Me.grpControls.SuspendLayout()
         Me.grpReceipt.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.pnlReceipt.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -291,6 +295,7 @@ Partial Class Form1
         'grpReceipt
         '
         Me.grpReceipt.BackColor = System.Drawing.SystemColors.Control
+        Me.grpReceipt.Controls.Add(Me.GroupBox1)
         Me.grpReceipt.Controls.Add(Me.pnlReceipt)
         Me.grpReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpReceipt.Location = New System.Drawing.Point(334, 138)
@@ -300,13 +305,42 @@ Partial Class Form1
         Me.grpReceipt.TabStop = False
         Me.grpReceipt.Text = "Receipt"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.lblTotal)
+        Me.GroupBox1.Controls.Add(Me.lblTotalText)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 289)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(180, 43)
+        Me.GroupBox1.TabIndex = 1
+        Me.GroupBox1.TabStop = False
+        '
+        'lblTotal
+        '
+        Me.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.lblTotal.Location = New System.Drawing.Point(46, 17)
+        Me.lblTotal.Name = "lblTotal"
+        Me.lblTotal.Size = New System.Drawing.Size(128, 17)
+        Me.lblTotal.TabIndex = 1
+        Me.lblTotal.Text = "€ 0.00"
+        Me.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblTotalText
+        '
+        Me.lblTotalText.AutoSize = True
+        Me.lblTotalText.Location = New System.Drawing.Point(6, 17)
+        Me.lblTotalText.Name = "lblTotalText"
+        Me.lblTotalText.Size = New System.Drawing.Size(44, 17)
+        Me.lblTotalText.TabIndex = 0
+        Me.lblTotalText.Text = "Total:"
+        '
         'pnlReceipt
         '
         Me.pnlReceipt.AutoScroll = True
         Me.pnlReceipt.Controls.Add(Me.lblReceipt)
         Me.pnlReceipt.Location = New System.Drawing.Point(6, 22)
         Me.pnlReceipt.Name = "pnlReceipt"
-        Me.pnlReceipt.Size = New System.Drawing.Size(180, 310)
+        Me.pnlReceipt.Size = New System.Drawing.Size(180, 261)
         Me.pnlReceipt.TabIndex = 0
         '
         'lblReceipt
@@ -340,6 +374,8 @@ Partial Class Form1
         Me.grpOrderDetails.PerformLayout()
         Me.grpControls.ResumeLayout(False)
         Me.grpReceipt.ResumeLayout(False)
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.pnlReceipt.ResumeLayout(False)
         Me.pnlReceipt.PerformLayout()
         Me.ResumeLayout(False)
@@ -369,4 +405,7 @@ Partial Class Form1
     Friend WithEvents lblAddNewPizza As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents lblTotalText As Label
+    Friend WithEvents lblTotal As Label
 End Class

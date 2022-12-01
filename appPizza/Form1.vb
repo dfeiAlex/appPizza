@@ -2,7 +2,7 @@
     Dim boolExtraCheese, boolExtraHam As Boolean
     Dim strPizzaSize, strPizzaType As String
     Dim intNumberOfPizzas As Integer
-    Dim dblTotal As Double
+    Dim decTotal As Decimal
 
     'Dictionary with the key being the input and the value being the cost to be added to the total
     Dim priceList = New Dictionary(Of String, Double) From {
@@ -19,7 +19,7 @@
 
     'Is run when the make pizza button is pressed, most of the logic originates from here
     Private Sub makePizza(sender As Object, e As EventArgs) Handles btnMakePizza.Click
-        If orderIsValid() Then
+        If isOrderValid() Then
             'Setting the values for all of the input variables here
             boolExtraCheese = chkExtraCheese.Checked
             boolExtraHam = chkExtraHam.Checked
@@ -36,12 +36,14 @@
                     strPizzaSize = radLarge.Text
             End Select
 
-            dblTotal = calculatePrice()
+            decTotal = calculatePrice()
+
+            displayTotal()
         End If
     End Sub
 
     'Check if all necessary inputs have been given
-    Private Function orderIsValid() As Boolean
+    Private Function isOrderValid() As Boolean
         'Declare booleans for each of the necessary inputs
         Dim boolPizzaSize, boolPizzaType, boolAmount, boolIsValid As Boolean
         Dim intAmount As Integer = Val(txtAmount.Text)
@@ -75,6 +77,7 @@
         End If
     End Function
 
+    'Calculate price for current pizza
     Private Function calculatePrice() As Double
         Dim dblPrice As Double
 
@@ -91,4 +94,10 @@
         Console.WriteLine($"Total: {dblPrice}")
         Return dblPrice
     End Function
+
+    'Display the total in lblTotal
+    Private Sub displayTotal()
+        Dim strFormattedAnswer As String = decTotal.ToString("F2")
+        lblTotal.Text = $"€ {strFormattedAnswer}"
+    End Sub
 End Class
