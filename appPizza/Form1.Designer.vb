@@ -64,7 +64,7 @@ Partial Class Form1
         '
         Me.lblPizzaType.AutoSize = True
         Me.lblPizzaType.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPizzaType.Location = New System.Drawing.Point(3, 147)
+        Me.lblPizzaType.Location = New System.Drawing.Point(3, 31)
         Me.lblPizzaType.Name = "lblPizzaType"
         Me.lblPizzaType.Size = New System.Drawing.Size(62, 13)
         Me.lblPizzaType.TabIndex = 2
@@ -75,7 +75,7 @@ Partial Class Form1
         Me.imgHeader.Image = CType(resources.GetObject("imgHeader.Image"), System.Drawing.Image)
         Me.imgHeader.Location = New System.Drawing.Point(-4, -11)
         Me.imgHeader.Name = "imgHeader"
-        Me.imgHeader.Size = New System.Drawing.Size(549, 143)
+        Me.imgHeader.Size = New System.Drawing.Size(597, 160)
         Me.imgHeader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.imgHeader.TabIndex = 7
         Me.imgHeader.TabStop = False
@@ -119,7 +119,7 @@ Partial Class Form1
         Me.grpSizes.Controls.Add(Me.radMedium)
         Me.grpSizes.Controls.Add(Me.radSmall)
         Me.grpSizes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpSizes.Location = New System.Drawing.Point(6, 31)
+        Me.grpSizes.Location = New System.Drawing.Point(6, 66)
         Me.grpSizes.Name = "grpSizes"
         Me.grpSizes.Size = New System.Drawing.Size(179, 95)
         Me.grpSizes.TabIndex = 0
@@ -132,7 +132,7 @@ Partial Class Form1
         Me.cboPizzaType.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboPizzaType.FormattingEnabled = True
         Me.cboPizzaType.Items.AddRange(New Object() {"Pepperoni", "Ham and Mushroom", "Vegetarian", "Special"})
-        Me.cboPizzaType.Location = New System.Drawing.Point(71, 144)
+        Me.cboPizzaType.Location = New System.Drawing.Point(71, 28)
         Me.cboPizzaType.Name = "cboPizzaType"
         Me.cboPizzaType.Size = New System.Drawing.Size(114, 21)
         Me.cboPizzaType.TabIndex = 1
@@ -209,7 +209,7 @@ Partial Class Form1
         Me.grpOrderDetails.Controls.Add(Me.grpExtraToppings)
         Me.grpOrderDetails.Controls.Add(Me.lblAmount)
         Me.grpOrderDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpOrderDetails.Location = New System.Drawing.Point(12, 138)
+        Me.grpOrderDetails.Location = New System.Drawing.Point(12, 153)
         Me.grpOrderDetails.Name = "grpOrderDetails"
         Me.grpOrderDetails.Size = New System.Drawing.Size(192, 340)
         Me.grpOrderDetails.TabIndex = 8
@@ -226,7 +226,7 @@ Partial Class Form1
         Me.grpControls.Controls.Add(Me.btnPrint)
         Me.grpControls.Controls.Add(Me.btnAddNewPizza)
         Me.grpControls.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpControls.Location = New System.Drawing.Point(210, 140)
+        Me.grpControls.Location = New System.Drawing.Point(210, 155)
         Me.grpControls.Name = "grpControls"
         Me.grpControls.Size = New System.Drawing.Size(118, 338)
         Me.grpControls.TabIndex = 9
@@ -298,9 +298,9 @@ Partial Class Form1
         Me.grpReceipt.Controls.Add(Me.grpTotal)
         Me.grpReceipt.Controls.Add(Me.pnlReceipt)
         Me.grpReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpReceipt.Location = New System.Drawing.Point(334, 138)
+        Me.grpReceipt.Location = New System.Drawing.Point(334, 153)
         Me.grpReceipt.Name = "grpReceipt"
-        Me.grpReceipt.Size = New System.Drawing.Size(192, 340)
+        Me.grpReceipt.Size = New System.Drawing.Size(243, 340)
         Me.grpReceipt.TabIndex = 9
         Me.grpReceipt.TabStop = False
         Me.grpReceipt.Text = "Receipt"
@@ -311,14 +311,14 @@ Partial Class Form1
         Me.grpTotal.Controls.Add(Me.lblTotalText)
         Me.grpTotal.Location = New System.Drawing.Point(6, 289)
         Me.grpTotal.Name = "grpTotal"
-        Me.grpTotal.Size = New System.Drawing.Size(180, 43)
+        Me.grpTotal.Size = New System.Drawing.Size(231, 43)
         Me.grpTotal.TabIndex = 1
         Me.grpTotal.TabStop = False
         '
         'lblTotal
         '
         Me.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.lblTotal.Location = New System.Drawing.Point(46, 17)
+        Me.lblTotal.Location = New System.Drawing.Point(97, 17)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(128, 17)
         Me.lblTotal.TabIndex = 1
@@ -340,15 +340,16 @@ Partial Class Form1
         Me.pnlReceipt.Controls.Add(Me.lblReceipt)
         Me.pnlReceipt.Location = New System.Drawing.Point(6, 22)
         Me.pnlReceipt.Name = "pnlReceipt"
-        Me.pnlReceipt.Size = New System.Drawing.Size(180, 261)
+        Me.pnlReceipt.Size = New System.Drawing.Size(231, 261)
         Me.pnlReceipt.TabIndex = 0
         '
         'lblReceipt
         '
         Me.lblReceipt.AutoSize = True
-        Me.lblReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblReceipt.BackColor = System.Drawing.SystemColors.Control
+        Me.lblReceipt.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblReceipt.Location = New System.Drawing.Point(0, 9)
-        Me.lblReceipt.MaximumSize = New System.Drawing.Size(160, 0)
+        Me.lblReceipt.MaximumSize = New System.Drawing.Size(211, 0)
         Me.lblReceipt.Name = "lblReceipt"
         Me.lblReceipt.Size = New System.Drawing.Size(0, 13)
         Me.lblReceipt.TabIndex = 0
@@ -357,14 +358,19 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(538, 490)
+        Me.ClientSize = New System.Drawing.Size(589, 507)
         Me.Controls.Add(Me.grpReceipt)
         Me.Controls.Add(Me.grpControls)
         Me.Controls.Add(Me.grpOrderDetails)
         Me.Controls.Add(Me.imgHeader)
+        Me.MaximumSize = New System.Drawing.Size(605, 546)
+        Me.MinimumSize = New System.Drawing.Size(605, 546)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "La Mia Pizzeria"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.imgHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSizes.ResumeLayout(False)
         Me.grpSizes.PerformLayout()

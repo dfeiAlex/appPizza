@@ -5,15 +5,15 @@
     Dim decTotal As Decimal
 
     'Dictionary with the key being the input and the value being the cost to be added to the total
-    Dim priceList = New Dictionary(Of String, Double) From {
+    Dim priceList = New Dictionary(Of String, Decimal) From {
         {"Pepperoni", 9.5},
-        {"Ham and Mushroom", 9},
-        {"Vegetarian", 8},
+        {"Ham and Mushroom", 9.0},
+        {"Vegetarian", 8.0},
         {"Special", 11},
-        {"Small", 0},
-        {"Medium", 2},
-        {"Large", 5},
-        {"Extra Cheese", 1},
+        {"Small", 0.0},
+        {"Medium", 2.0},
+        {"Large", 5.0},
+        {"Extra Cheese", 1.0},
         {"Extra Ham", 1.5}
     }
 
@@ -38,6 +38,7 @@
 
             decTotal = calculatePrice()
 
+            formatReceipt()
             displayTotal()
         End If
     End Sub
@@ -78,36 +79,56 @@
     End Function
 
     'Calculate price for current pizza
-    Private Function calculatePrice() As Double
-        Dim dblPrice As Double
+    Private Function calculatePrice() As Decimal
+        Dim decPrice As Decimal
 
         'Get cost for pizza type and size
-        dblPrice += priceList(strPizzaType)
-        dblPrice += priceList(strPizzaSize)
+        decPrice += priceList(strPizzaType)
+        decPrice += priceList(strPizzaSize)
 
         'Check if there are extra toppings. If true add the extra cost, else add nothing
-        dblPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
-        dblPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
+        decPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
+        decPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
 
-        dblPrice *= intNumberOfPizzas
+        decPrice *= intNumberOfPizzas
 
-        Console.WriteLine($"Total: {dblPrice}")
-        Return dblPrice
+        Console.WriteLine($"Total: {decPrice}")
+        Return decPrice
     End Function
+
+    'Format the receipt
+    Private Sub formatReceipt()
+        Dim newline As String = Environment.NewLine
+
+        strReceipt = ""
+
+        'Add header
+        strReceipt += $"Order No. 1" + newline
+        strReceipt += $"{TimeOfDay.ToShortTimeString} {Today.ToShortDateString}" + newline
+        strReceipt += "----------------------------------" + newline + newline
+
+        'Add pizza details and add controlled spacing between item and price
+        strReceipt += $"{intNumberOfPizzas} x" + newline
+        strReceipt += $"{strPizzaType + " Pizza",-23}{"€" + priceList(strPizzaType).ToString,11}" + newline
+        strReceipt += $"{"- " + strPizzaSize,-23}{"€" + priceList(strPizzaSize).ToString,11}" + newline
+
+        If boolExtraCheese Then
+            strReceipt += $"{"- Extra Cheese",-23}{"€" + priceList("Extra Cheese").ToString,11}" + newline
+        End If
+
+        If boolExtraHam Then
+            strReceipt += $"{"- Extra Ham",-23}{"€" + priceList("Extra Ham").ToString,11}" + newline
+        End If
+
+        'Add subtotal section
+        strReceipt += newline + $"Subtotal: {"€" + decTotal.ToString("F2"),24}"
+
+        lblReceipt.Text = strReceipt
+    End Sub
 
     'Display the total in lblTotal
     Private Sub displayTotal()
         Dim strFormattedAnswer As String = decTotal.ToString("F2")
         lblTotal.Text = $"€ {strFormattedAnswer}"
-    End Sub
-
-    'Format the receipt
-    Private Sub formatReceipt()
-
-    End Sub
-
-    'Update the receipt
-    Private Sub updateReceipt()
-
     End Sub
 End Class
