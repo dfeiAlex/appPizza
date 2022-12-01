@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     Dim boolExtraCheese, boolExtraHam As Boolean
-    Dim strPizzaSize, strPizzaType As String
+    Dim strPizzaSize, strPizzaType, strReceipt As String
     Dim intNumberOfPizzas As Integer
     Dim decTotal As Decimal
 
@@ -99,5 +99,15 @@
     Private Sub displayTotal()
         Dim strFormattedAnswer As String = decTotal.ToString("F2")
         lblTotal.Text = $"€ {strFormattedAnswer}"
+    End Sub
+
+    'Format the receipt
+    Private Sub formatReceipt()
+
+    End Sub
+
+    'Update the receipt
+    Private Sub updateReceipt()
+
     End Sub
 End Class
