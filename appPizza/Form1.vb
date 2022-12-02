@@ -38,17 +38,18 @@
                     strPizzaSize = radLarge.Text
             End Select
 
+            'Calculate total
             decTotal = calculatePrice()
 
+            'Output receipt and total
             formatReceipt()
             displayTotal()
         End If
     End Sub
 
-    'Reset all variables and clear input and output
+    'Reset all variables; clear input and output
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
         intOrderNumber += 1
-
         resetForm()
     End Sub
 
@@ -66,10 +67,9 @@
         boolIsValid = boolPizzaSize And boolPizzaType And boolAmount
 
         If boolIsValid Then
-            'MessageBox.Show("Everything is working.") 'Debug
             Return True 'All necessary inputs were given; the order is valid
         Else
-            'Display error message for relevant missing inputs
+            'Display error message for relevant missing input
             Select Case False
                 Case boolPizzaSize
                     MessageBox.Show("Please select a pizza size!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -95,13 +95,12 @@
         decPrice += priceList(strPizzaType)
         decPrice += priceList(strPizzaSize)
 
-        'Check if there are extra toppings. If true add the extra cost, else add nothing
+        'Check if there are extra toppings. If there are; add the extra cost, otherwise add nothing
         decPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
         decPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
 
         decPrice *= intNumberOfPizzas
 
-        Console.WriteLine($"Total: {decPrice}")
         Return decPrice
     End Function
 
@@ -112,14 +111,14 @@
         strReceipt = ""
 
         'Add header
-        strReceipt += $"Order No. {intOrderNumber}" + newline
-        strReceipt += $"{TimeOfDay.ToShortTimeString} {Today.ToShortDateString}" + newline
+        strReceipt += $"Order No. {intOrderNumber}" + newline 'Order number
+        strReceipt += $"{TimeOfDay.ToShortTimeString} {Today.ToShortDateString}" + newline 'Current time and date
         strReceipt += "----------------------------------" + newline + newline
 
         'Add pizza details and add controlled spacing between item and price
-        strReceipt += $"{intNumberOfPizzas} x" + newline
-        strReceipt += $"{strPizzaType + " Pizza",-23}{"€" + priceList(strPizzaType).ToString,11}" + newline
-        strReceipt += $"{"- " + strPizzaSize,-23}{"€" + priceList(strPizzaSize).ToString,11}" + newline
+        strReceipt += $"{intNumberOfPizzas} x" + newline 'Number of pizzas
+        strReceipt += $"{strPizzaType + " Pizza",-23}{"€" + priceList(strPizzaType).ToString,11}" + newline 'Pizza type and price
+        strReceipt += $"{"- " + strPizzaSize,-23}{"€" + priceList(strPizzaSize).ToString,11}" + newline 'Pizza size and price
 
         If boolExtraHam Then
             strReceipt += $"{"- Extra Ham",-23}{"€" + priceList("Extra Ham").ToString,11}" + newline
@@ -137,10 +136,11 @@
 
     'Display the total in lblTotal
     Private Sub displayTotal()
-        Dim strFormattedAnswer As String = decTotal.ToString("F2")
+        Dim strFormattedAnswer As String = decTotal.ToString("F2") 'Format total to 2 decimal places
         lblTotal.Text = $"€ {strFormattedAnswer}"
     End Sub
 
+    'Clear input, output and reset variables
     Private Sub resetForm()
         'Reset variables
         boolExtraCheese = False

@@ -40,10 +40,10 @@ Partial Class Form1
         Me.grpControls = New System.Windows.Forms.GroupBox()
         Me.lblCreateNewOrder = New System.Windows.Forms.Label()
         Me.lblPrintReceipt = New System.Windows.Forms.Label()
-        Me.lblAddNewPizza = New System.Windows.Forms.Label()
+        Me.lblAdd = New System.Windows.Forms.Label()
         Me.btnNewOrder = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
-        Me.btnAddNewPizza = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
         Me.grpReceipt = New System.Windows.Forms.GroupBox()
         Me.grpTotal = New System.Windows.Forms.GroupBox()
         Me.lblTotal = New System.Windows.Forms.Label()
@@ -222,10 +222,10 @@ Partial Class Form1
         Me.grpControls.BackColor = System.Drawing.SystemColors.Control
         Me.grpControls.Controls.Add(Me.lblCreateNewOrder)
         Me.grpControls.Controls.Add(Me.lblPrintReceipt)
-        Me.grpControls.Controls.Add(Me.lblAddNewPizza)
+        Me.grpControls.Controls.Add(Me.lblAdd)
         Me.grpControls.Controls.Add(Me.btnNewOrder)
         Me.grpControls.Controls.Add(Me.btnPrint)
-        Me.grpControls.Controls.Add(Me.btnAddNewPizza)
+        Me.grpControls.Controls.Add(Me.btnAdd)
         Me.grpControls.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpControls.Location = New System.Drawing.Point(210, 155)
         Me.grpControls.Name = "grpControls"
@@ -254,14 +254,14 @@ Partial Class Form1
         Me.lblPrintReceipt.Text = "Print receipt"
         Me.lblPrintReceipt.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'lblAddNewPizza
+        'lblAdd
         '
-        Me.lblAddNewPizza.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAddNewPizza.Location = New System.Drawing.Point(15, 29)
-        Me.lblAddNewPizza.Name = "lblAddNewPizza"
-        Me.lblAddNewPizza.Size = New System.Drawing.Size(89, 13)
-        Me.lblAddNewPizza.TabIndex = 3
-        Me.lblAddNewPizza.Text = "Add a new pizza"
+        Me.lblAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAdd.Location = New System.Drawing.Point(15, 29)
+        Me.lblAdd.Name = "lblAdd"
+        Me.lblAdd.Size = New System.Drawing.Size(89, 13)
+        Me.lblAdd.TabIndex = 3
+        Me.lblAdd.Text = "Add a new pizza"
         '
         'btnNewOrder
         '
@@ -283,15 +283,15 @@ Partial Class Form1
         Me.btnPrint.Text = "Print"
         Me.btnPrint.UseVisualStyleBackColor = True
         '
-        'btnAddNewPizza
+        'btnAdd
         '
-        Me.btnAddNewPizza.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddNewPizza.Location = New System.Drawing.Point(15, 45)
-        Me.btnAddNewPizza.Name = "btnAddNewPizza"
-        Me.btnAddNewPizza.Size = New System.Drawing.Size(89, 21)
-        Me.btnAddNewPizza.TabIndex = 0
-        Me.btnAddNewPizza.Text = "Add"
-        Me.btnAddNewPizza.UseVisualStyleBackColor = True
+        Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdd.Location = New System.Drawing.Point(15, 45)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(89, 21)
+        Me.btnAdd.TabIndex = 0
+        Me.btnAdd.Text = "Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'grpReceipt
         '
@@ -407,8 +407,8 @@ Partial Class Form1
     Friend WithEvents lblReceipt As Label
     Friend WithEvents btnNewOrder As Button
     Friend WithEvents btnPrint As Button
-    Friend WithEvents btnAddNewPizza As Button
-    Friend WithEvents lblAddNewPizza As Label
+    Friend WithEvents btnAdd As Button
+    Friend WithEvents lblAdd As Label
     Friend WithEvents lblCreateNewOrder As Label
     Friend WithEvents lblPrintReceipt As Label
     Friend WithEvents grpTotal As GroupBox
