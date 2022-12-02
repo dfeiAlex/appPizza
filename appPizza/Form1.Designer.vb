@@ -209,6 +209,7 @@ Partial Class Form1
         Me.grpOrderDetails.Controls.Add(Me.grpExtraToppings)
         Me.grpOrderDetails.Controls.Add(Me.lblAmount)
         Me.grpOrderDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpOrderDetails.ForeColor = System.Drawing.SystemColors.ControlText
         Me.grpOrderDetails.Location = New System.Drawing.Point(12, 153)
         Me.grpOrderDetails.Name = "grpOrderDetails"
         Me.grpOrderDetails.Size = New System.Drawing.Size(192, 340)
@@ -370,7 +371,6 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "La Mia Pizzeria"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.imgHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSizes.ResumeLayout(False)
         Me.grpSizes.PerformLayout()

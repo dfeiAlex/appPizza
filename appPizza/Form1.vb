@@ -3,8 +3,10 @@
     Dim strPizzaSize, strPizzaType, strReceipt As String
     Dim intNumberOfPizzas As Integer
     Dim decTotal As Decimal
+    Dim intOrderNumber As Integer = 1
 
-    'Dictionary with the key being the input and the value being the cost to be added to the total
+    'Dictionary to store item and price values. The price is added onto the subtotal 
+    'Entry format: { String ITEM , Decimal PRICE }
     Dim priceList = New Dictionary(Of String, Decimal) From {
         {"Pepperoni", 9.5},
         {"Ham and Mushroom", 9.0},
@@ -41,6 +43,13 @@
             formatReceipt()
             displayTotal()
         End If
+    End Sub
+
+    'Reset all variables and clear input and output
+    Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
+        intOrderNumber += 1
+
+
     End Sub
 
     'Check if all necessary inputs have been given
@@ -103,7 +112,7 @@
         strReceipt = ""
 
         'Add header
-        strReceipt += $"Order No. 1" + newline
+        strReceipt += $"Order No. {intOrderNumber}" + newline
         strReceipt += $"{TimeOfDay.ToShortTimeString} {Today.ToShortDateString}" + newline
         strReceipt += "----------------------------------" + newline + newline
 
@@ -112,16 +121,16 @@
         strReceipt += $"{strPizzaType + " Pizza",-23}{"€" + priceList(strPizzaType).ToString,11}" + newline
         strReceipt += $"{"- " + strPizzaSize,-23}{"€" + priceList(strPizzaSize).ToString,11}" + newline
 
-        If boolExtraCheese Then
-            strReceipt += $"{"- Extra Cheese",-23}{"€" + priceList("Extra Cheese").ToString,11}" + newline
-        End If
-
         If boolExtraHam Then
             strReceipt += $"{"- Extra Ham",-23}{"€" + priceList("Extra Ham").ToString,11}" + newline
         End If
 
+        If boolExtraCheese Then
+            strReceipt += $"{"- Extra Cheese",-23}{"€" + priceList("Extra Cheese").ToString,11}" + newline
+        End If
+
         'Add subtotal section
-        strReceipt += newline + $"Subtotal: {"€" + decTotal.ToString("F2"),24}"
+        strReceipt += newline + $"Cost: {"€" + decTotal.ToString("F2"),28}"
 
         lblReceipt.Text = strReceipt
     End Sub
@@ -130,5 +139,35 @@
     Private Sub displayTotal()
         Dim strFormattedAnswer As String = decTotal.ToString("F2")
         lblTotal.Text = $"€ {strFormattedAnswer}"
+    End Sub
+
+    Private Sub resetForm()
+        'Reset variables
+        boolExtraCheese = False
+        boolExtraHam = False
+
+        strPizzaSize = ""
+        strPizzaType = ""
+        strReceipt = ""
+
+        intNumberOfPizzas = 0
+        decTotal = 0
+
+        'Clear input and output
+        'Input
+        cboPizzaType.SelectedIndex = -1
+
+        radSmall.Checked = False
+        radMedium.Checked = False
+        radLarge.Checked = False
+
+        chkExtraCheese.Checked = False
+        chkExtraHam.Checked = False
+
+        txtAmount.Text = ""
+
+        'Output
+        lblReceipt.Text = ""
+        lblTotal.Text = ""
     End Sub
 End Class
