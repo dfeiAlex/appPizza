@@ -49,7 +49,7 @@
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
         intOrderNumber += 1
 
-
+        resetForm()
     End Sub
 
     'Check if all necessary inputs have been given
@@ -130,7 +130,7 @@
         End If
 
         'Add subtotal section
-        strReceipt += newline + $"Cost: {"€" + decTotal.ToString("F2"),28}"
+        strReceipt += newline + $"Price: {"€" + decTotal.ToString("F2"),27}"
 
         lblReceipt.Text = strReceipt
     End Sub
