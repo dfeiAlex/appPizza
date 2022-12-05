@@ -20,7 +20,7 @@
     }
 
     'Is run when the make pizza button is pressed, most of the logic originates from here
-    Private Sub makePizza(sender As Object, e As EventArgs) Handles btnMakePizza.Click
+    Private Sub addPizza(sender As Object, e As EventArgs) Handles btnAddPizza.Click
         If isOrderValid() Then
             'Setting the values for all of the input variables here
             boolExtraCheese = chkExtraCheese.Checked

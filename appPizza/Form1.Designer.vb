@@ -35,7 +35,7 @@ Partial Class Form1
         Me.grpExtraToppings = New System.Windows.Forms.GroupBox()
         Me.lblAmount = New System.Windows.Forms.Label()
         Me.txtAmount = New System.Windows.Forms.TextBox()
-        Me.btnMakePizza = New System.Windows.Forms.Button()
+        Me.btnAddPizza = New System.Windows.Forms.Button()
         Me.grpOrderDetails = New System.Windows.Forms.GroupBox()
         Me.grpControls = New System.Windows.Forms.GroupBox()
         Me.lblCreateNewOrder = New System.Windows.Forms.Label()
@@ -183,27 +183,28 @@ Partial Class Form1
         '
         Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAmount.Location = New System.Drawing.Point(137, 263)
+        Me.txtAmount.MaxLength = 2
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.Size = New System.Drawing.Size(48, 20)
         Me.txtAmount.TabIndex = 5
         Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'btnMakePizza
+        'btnAddPizza
         '
-        Me.btnMakePizza.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMakePizza.Location = New System.Drawing.Point(6, 295)
-        Me.btnMakePizza.Name = "btnMakePizza"
-        Me.btnMakePizza.Size = New System.Drawing.Size(179, 37)
-        Me.btnMakePizza.TabIndex = 6
-        Me.btnMakePizza.Text = "Make Pizza!"
-        Me.btnMakePizza.UseVisualStyleBackColor = True
+        Me.btnAddPizza.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddPizza.Location = New System.Drawing.Point(6, 295)
+        Me.btnAddPizza.Name = "btnAddPizza"
+        Me.btnAddPizza.Size = New System.Drawing.Size(179, 37)
+        Me.btnAddPizza.TabIndex = 6
+        Me.btnAddPizza.Text = "Add Pizza!"
+        Me.btnAddPizza.UseVisualStyleBackColor = True
         '
         'grpOrderDetails
         '
         Me.grpOrderDetails.BackColor = System.Drawing.SystemColors.Control
         Me.grpOrderDetails.Controls.Add(Me.grpSizes)
         Me.grpOrderDetails.Controls.Add(Me.cboPizzaType)
-        Me.grpOrderDetails.Controls.Add(Me.btnMakePizza)
+        Me.grpOrderDetails.Controls.Add(Me.btnAddPizza)
         Me.grpOrderDetails.Controls.Add(Me.lblPizzaType)
         Me.grpOrderDetails.Controls.Add(Me.txtAmount)
         Me.grpOrderDetails.Controls.Add(Me.grpExtraToppings)
@@ -399,7 +400,7 @@ Partial Class Form1
     Friend WithEvents grpExtraToppings As GroupBox
     Friend WithEvents lblAmount As Label
     Friend WithEvents txtAmount As TextBox
-    Friend WithEvents btnMakePizza As Button
+    Friend WithEvents btnAddPizza As Button
     Friend WithEvents grpOrderDetails As GroupBox
     Friend WithEvents grpControls As GroupBox
     Friend WithEvents grpReceipt As GroupBox
