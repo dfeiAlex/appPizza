@@ -4,6 +4,7 @@
     Dim intNumberOfPizzas As Integer
     Dim decTotal As Decimal
     Dim intOrderNumber As Integer = 1
+    Dim orderFinished As Boolean = False
 
     'Dictionary to store item and price values. The price is added onto the subtotal 
     'Entry format: { String ITEM , Decimal PRICE }
@@ -42,6 +43,7 @@
             decTotal = calculatePrice()
 
             'Output receipt and total
+            orderFinished = True
             formatReceipt()
             displayTotal()
         End If
@@ -104,6 +106,24 @@
         Return decPrice
     End Function
 
+    'Run when print button is clicked, print receipt
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        Try
+            If orderFinished Then
+                prtReceipt.Print()
+            End If
+        Catch ex As Exception
+            MessageBox.Show("An error occurred; cannot print!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    'Print receipt sub
+    Private Sub printReceipt_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles prtReceipt.PrintPage
+        'use draw string to make receipt
+        e.Graphics.DrawString(strReceipt, New Font("Consolas", 11, FontStyle.Regular), Brushes.Black, 231, 261)
+        e.HasMorePages = False
+    End Sub
+
     'Format the receipt
     Private Sub formatReceipt()
         Dim newline As String = Environment.NewLine
@@ -111,7 +131,7 @@
         strReceipt = ""
 
         'Add header
-        strReceipt += $"Order No. {intOrderNumber}" + newline 'Order number
+        strReceipt += $"Order No. {intOrderNumber} :D" + newline 'Order number
         strReceipt += $"{TimeOfDay.ToShortTimeString} {Today.ToShortDateString}" + newline 'Current time and date
         strReceipt += "----------------------------------" + newline + newline
 
@@ -145,6 +165,7 @@
         'Reset variables
         boolExtraCheese = False
         boolExtraHam = False
+        orderFinished = False
 
         strPizzaSize = ""
         strPizzaType = ""
