@@ -22,8 +22,9 @@
 
     'Is run when the make pizza button is pressed, most of the logic originates from here
     Private Sub addPizza(sender As Object, e As EventArgs) Handles btnAddPizza.Click
+        'Check if all of the necessary input has been given
         If isOrderValid() Then
-            'Setting the values for all of the input variables here
+            'If the order
             boolExtraCheese = chkExtraCheese.Checked
             boolExtraHam = chkExtraHam.Checked
 
@@ -49,11 +50,22 @@
         End If
     End Sub
 
-    'Reset all variables; clear input and output
-    Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
-        intOrderNumber += 1
-        resetForm()
-    End Sub
+    'Calculate price for current pizza
+    Private Function calculatePrice() As Decimal
+        Dim decPrice As Decimal
+
+        'Get cost for pizza type and size
+        decPrice += priceList(strPizzaType)
+        decPrice += priceList(strPizzaSize)
+
+        'Check if there are extra toppings. If there are; add the extra cost, otherwise add nothing
+        decPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
+        decPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
+
+        decPrice *= intNumberOfPizzas
+
+        Return decPrice
+    End Function
 
     'Check if all necessary inputs have been given
     Private Function isOrderValid() As Boolean
@@ -89,22 +101,61 @@
         End If
     End Function
 
-    'Calculate price for current pizza
-    Private Function calculatePrice() As Decimal
-        Dim decPrice As Decimal
+    'Display the total in lblTotal
+    Private Sub displayTotal()
+        Dim strFormattedAnswer As String = decTotal.ToString("F2") 'Format total to 2 decimal places
+        lblTotal.Text = $"€ {strFormattedAnswer}"
+    End Sub
 
-        'Get cost for pizza type and size
-        decPrice += priceList(strPizzaType)
-        decPrice += priceList(strPizzaSize)
+    'Reset all variables; clear input and output
+    Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
+        intOrderNumber += 1
+        resetForm()
+    End Sub
 
-        'Check if there are extra toppings. If there are; add the extra cost, otherwise add nothing
-        decPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
-        decPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
+    'Clear input, output and reset variables
+    Private Sub resetForm()
+        'Reset variables
+        boolExtraCheese = False
+        boolExtraHam = False
+        orderFinished = False
 
-        decPrice *= intNumberOfPizzas
+        strPizzaSize = ""
+        strPizzaType = ""
+        strReceipt = ""
 
-        Return decPrice
-    End Function
+        intNumberOfPizzas = 0
+        decTotal = 0
+
+        'Clear input and output
+        'Input
+        cboPizzaType.SelectedIndex = -1
+
+        radSmall.Checked = False
+        radMedium.Checked = False
+        radLarge.Checked = False
+
+        chkExtraCheese.Checked = False
+        chkExtraHam.Checked = False
+
+        txtAmount.Text = ""
+
+        'Output
+        lblReceipt.Text = ""
+        lblTotal.Text = ""
+    End Sub
+
+
+
+
+
+    '-------------------------------------------------------------
+    'Code past this point is not relevant to the project!
+    '-------------------------------------------------------------
+
+
+
+
 
     'Run when print button is clicked, print receipt
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
@@ -152,43 +203,5 @@
         strReceipt += newline + $"Price: {"€" + decTotal.ToString("F2"),27}"
 
         lblReceipt.Text = strReceipt
-    End Sub
-
-    'Display the total in lblTotal
-    Private Sub displayTotal()
-        Dim strFormattedAnswer As String = decTotal.ToString("F2") 'Format total to 2 decimal places
-        lblTotal.Text = $"€ {strFormattedAnswer}"
-    End Sub
-
-    'Clear input, output and reset variables
-    Private Sub resetForm()
-        'Reset variables
-        boolExtraCheese = False
-        boolExtraHam = False
-        orderFinished = False
-
-        strPizzaSize = ""
-        strPizzaType = ""
-        strReceipt = ""
-
-        intNumberOfPizzas = 0
-        decTotal = 0
-
-        'Clear input and output
-        'Input
-        cboPizzaType.SelectedIndex = -1
-
-        radSmall.Checked = False
-        radMedium.Checked = False
-        radLarge.Checked = False
-
-        chkExtraCheese.Checked = False
-        chkExtraHam.Checked = False
-
-        txtAmount.Text = ""
-
-        'Output
-        lblReceipt.Text = ""
-        lblTotal.Text = ""
     End Sub
 End Class
