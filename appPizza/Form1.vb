@@ -1,207 +1,88 @@
 ﻿Public Class Form1
-    Dim boolExtraCheese, boolExtraHam As Boolean
-    Dim strPizzaSize, strPizzaType, strReceipt As String
-    Dim intNumberOfPizzas As Integer
-    Dim decTotal As Decimal
-    Dim intOrderNumber As Integer = 1
-    Dim orderFinished As Boolean = False
+    Dim objPizza As Pizza = New Pizza()
 
-    'Dictionary to store item and price values. The price is added onto the subtotal 
-    'Entry format: { String ITEM , Decimal PRICE }
-    Dim priceList = New Dictionary(Of String, Decimal) From {
-        {"Pepperoni", 9.5},
-        {"Ham and Mushroom", 9.0},
-        {"Vegetarian", 8.0},
-        {"Special", 11},
-        {"Small", 0.0},
-        {"Medium", 2.0},
-        {"Large", 5.0},
-        {"Extra Cheese", 1.0},
-        {"Extra Ham", 1.5}
-    }
+    'Select pizza type
+    Private Sub cboPizzaType_SelectedIndexChanged(cboBox As Object, e As EventArgs) Handles cboPizzaType.SelectedIndexChanged
+        objPizza.strPizzaType = cboBox.SelectedItem
+    End Sub
 
-    'Is run when the make pizza button is pressed, most of the logic originates from here
-    Private Sub addPizza(sender As Object, e As EventArgs) Handles btnAddPizza.Click
-        'Check if all of the necessary input has been given
-        If isOrderValid() Then
-            'If the order
-            boolExtraCheese = chkExtraCheese.Checked
-            boolExtraHam = chkExtraHam.Checked
+    'Select pizza size
+    Private Sub radSmall_CheckedChanged(radButton As Object, e As EventArgs) Handles radSmall.CheckedChanged, radMedium.CheckedChanged, radLarge.CheckedChanged
+        Select Case True
+            Case radSmall.Checked
+                objPizza.strPizzaSize = radSmall.Text
+            Case radMedium.Checked
+                objPizza.strPizzaSize = radMedium.Text
+            Case radLarge.Checked
+                objPizza.strPizzaSize = radLarge.Text
+        End Select
+    End Sub
 
-            strPizzaType = cboPizzaType.SelectedItem
-            intNumberOfPizzas = Val(txtAmount.Text)
+    'Check for extra cheese
+    Private Sub chkExtraCheese_CheckedChanged(chkBox As Object, e As EventArgs) Handles chkExtraCheese.CheckedChanged
+        objPizza.boolExtraCheese = chkBox.Checked
+    End Sub
 
-            Select Case True
-                Case radSmall.Checked
-                    strPizzaSize = radSmall.Text
-                Case radMedium.Checked
-                    strPizzaSize = radMedium.Text
-                Case radLarge.Checked
-                    strPizzaSize = radLarge.Text
-            End Select
+    'Check for extra ham
+    Private Sub chkExtraHam_CheckedChanged(chkBox As Object, e As EventArgs) Handles chkExtraHam.CheckedChanged
+        objPizza.boolExtraHam = chkBox.Checked
+    End Sub
 
-            'Calculate total
-            decTotal = calculatePrice()
+    'Choose number of pizzas
+    Private Sub txtAmount_TextChanged(txtBox As Object, e As EventArgs) Handles txtAmount.TextChanged
+        If Not IsNumeric(txtBox.Text) And txtBox.Text <> "" Then
+            MessageBox.Show("Please enter a valid number!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtBox.Text = ""
+            Return
+        End If
 
-            'Output receipt and total
-            orderFinished = True
-            formatReceipt()
-            displayTotal()
+        If txtBox.Text <> "" Then
+            If Val(txtBox.Text) > 10 Then
+                txtBox.Text = 10
+            ElseIf Val(txtBox.Text) < 1 Then
+                txtBox.Text = 1
+            End If
+
+            txtBox.Select(txtBox.Text.Length, 0)
+        End If
+
+        objPizza.intAmount = Val(txtBox.Text)
+    End Sub
+
+    'Display total and receipt
+    Private Sub btnMakePizza_Click(sender As Object, e As EventArgs) Handles btnMakePizza.Click
+        objPizza.calculateTotal()
+
+        'Check if pizza is valid
+        If objPizza.boolValidPizza Then
+            'Display total and receipt
+            lblTotal.Text = objPizza.calculateTotal()
+            lblReceipt.Text = objPizza.getReceipt()
         End If
     End Sub
 
-    'Calculate price for current pizza
-    Private Function calculatePrice() As Decimal
-        Dim decPrice As Decimal
-
-        'Get cost for pizza type and size
-        decPrice += priceList(strPizzaType)
-        decPrice += priceList(strPizzaSize)
-
-        'Check if there are extra toppings. If there are; add the extra cost, otherwise add nothing
-        decPrice += If(boolExtraCheese, priceList("Extra Cheese"), 0)
-        decPrice += If(boolExtraHam, priceList("Extra Ham"), 0)
-
-        decPrice *= intNumberOfPizzas
-
-        Return decPrice
-    End Function
-
-    'Check if all necessary inputs have been given
-    Private Function isOrderValid() As Boolean
-        'Declare booleans for each of the necessary inputs
-        Dim boolPizzaSize, boolPizzaType, boolAmount, boolIsValid As Boolean
-        Dim intAmount As Integer = Val(txtAmount.Text)
-
-        boolPizzaSize = (radSmall.Checked Or radMedium.Checked Or radLarge.Checked) 'Check to see if a size for the pizza was selected, is false if no size is selected
-        boolPizzaType = (cboPizzaType.SelectedItem <> "") 'Check to see if a pizza type was selected, is false if no type was selected
-        boolAmount = (txtAmount.Text <> "" And (Val(txtAmount.Text) >= 1 And Val(txtAmount.Text) <= 10)) 'Checks whether an amount was input and if that amount is between 1 and 10
-
-        'Check to see that all booleans are True
-        boolIsValid = boolPizzaSize And boolPizzaType And boolAmount
-
-        If boolIsValid Then
-            Return True 'All necessary inputs were given; the order is valid
-        Else
-            'Display error message for relevant missing input
-            Select Case False
-                Case boolPizzaSize
-                    MessageBox.Show("Please select a pizza size!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Case boolPizzaType
-                    MessageBox.Show("Please select a pizza type!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Case boolAmount
-                    If txtAmount.Text = "" Then
-                        MessageBox.Show("Please enter the number of pizzas!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    ElseIf intAmount > 10 Or intAmount < 1 Then
-                        MessageBox.Show("The number of pizzas must be a number between 1 and 10!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
-            End Select
-
-            Return False 'Necessary inputs were not given, order cannot be made yet
-        End If
-    End Function
-
-    'Display the total in lblTotal
-    Private Sub displayTotal()
-        Dim strFormattedAnswer As String = decTotal.ToString("F2") 'Format total to 2 decimal places
-        lblTotal.Text = $"€ {strFormattedAnswer}"
-    End Sub
-
-    'Reset all variables; clear input and output
+    'Reset variables for the new pizza
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
-        intOrderNumber += 1
-        resetForm()
-    End Sub
+        objPizza.reset()
 
-    'Clear input, output and reset variables
-    Private Sub resetForm()
-        'Reset variables
-        boolExtraCheese = False
-        boolExtraHam = False
-        orderFinished = False
+        'Clear form
+        lblReceipt.Text = ""
+        lblTotal.Text = ""
 
-        strPizzaSize = ""
-        strPizzaType = ""
-        strReceipt = ""
-
-        intNumberOfPizzas = 0
-        decTotal = 0
-
-        'Clear input and output
-        'Input
         cboPizzaType.SelectedIndex = -1
 
-        radSmall.Checked = False
+        radSmall.Checked = True
         radMedium.Checked = False
         radLarge.Checked = False
 
         chkExtraCheese.Checked = False
         chkExtraHam.Checked = False
 
-        txtAmount.Text = ""
-
-        'Output
-        lblReceipt.Text = ""
-        lblTotal.Text = ""
+        txtAmount.Text = "1"
     End Sub
 
-
-
-
-
-    '-------------------------------------------------------------
-    'Code past this point is not relevant to the project!
-    '-------------------------------------------------------------
-
-
-
-
-
-    'Run when print button is clicked, print receipt
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-        Try
-            If orderFinished Then
-                prtReceipt.Print()
-            End If
-        Catch ex As Exception
-            MessageBox.Show("An error occurred; cannot print!", "Mama Mia!", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    'Print receipt sub
-    Private Sub printReceipt_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles prtReceipt.PrintPage
-        'use draw string to make receipt
-        e.Graphics.DrawString(strReceipt, New Font("Consolas", 11, FontStyle.Regular), Brushes.Black, 231, 261)
-        e.HasMorePages = False
-    End Sub
-
-    'Format the receipt
-    Private Sub formatReceipt()
-        Dim newline As String = Environment.NewLine
-
-        strReceipt = ""
-
-        'Add header
-        strReceipt += $"Order No. {intOrderNumber} :D" + newline 'Order number
-        strReceipt += $"{TimeOfDay.ToShortTimeString} {Today.ToShortDateString}" + newline 'Current time and date
-        strReceipt += "----------------------------------" + newline + newline
-
-        'Add pizza details and add controlled spacing between item and price
-        strReceipt += $"{intNumberOfPizzas} x" + newline 'Number of pizzas
-        strReceipt += $"{strPizzaType + " Pizza",-23}{"€" + priceList(strPizzaType).ToString,11}" + newline 'Pizza type and price
-        strReceipt += $"{"- " + strPizzaSize,-23}{"€" + priceList(strPizzaSize).ToString,11}" + newline 'Pizza size and price
-
-        If boolExtraHam Then
-            strReceipt += $"{"- Extra Ham",-23}{"€" + priceList("Extra Ham").ToString,11}" + newline
-        End If
-
-        If boolExtraCheese Then
-            strReceipt += $"{"- Extra Cheese",-23}{"€" + priceList("Extra Cheese").ToString,11}" + newline
-        End If
-
-        'Add subtotal section
-        strReceipt += newline + $"Price: {"€" + decTotal.ToString("F2"),27}"
-
-        lblReceipt.Text = strReceipt
+    'Debug
+    Private Sub btnLog_Click(sender As Object, e As EventArgs) Handles btnLog.Click
+        objPizza.logPizzaDetails()
     End Sub
 End Class
