@@ -24,7 +24,7 @@
     }
 
     'format price to 2 decimal places
-    Private Function formatPrice(price As Double) As String
+    Public Function formatPrice(price As Double) As String
         Return $"{price:C2}" 'Return the price formatted to 2 decimal places and in the local currency
     End Function
 
@@ -51,6 +51,7 @@
         End If
 
         dblTotal *= intAmount 'Multiply total by the number of pizzas ordered
+
         Return formatPrice(dblTotal)
     End Function
 
@@ -65,7 +66,7 @@
         dblTotal = 0
     End Sub
 
-    'For debug
+    'For debug, irrelevant
     Public Sub logPizzaDetails()
         Dim strDebug As String = ""
         Dim nl As String = Environment.NewLine
@@ -78,8 +79,23 @@
         strDebug += $"Extra Ham: {boolExtraHam}" + nl
         strDebug += $"Number of Pizzas: {intAmount}" + nl
         strDebug += "----------------------------" + nl + nl
-        strDebug += $"Total: {dblTotal:C2}"
+        strDebug += $"Total: {dblTotal}"
 
         MessageBox.Show(strDebug, "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+    'Get receipt, irrelevant to the project
+    Public Function getReceipt() As String
+        Dim dictInputs = New Dictionary(Of String, Object) From {
+            {"strPizzaType", strPizzaType},
+            {"strPizzaSize", strPizzaSize},
+            {"boolExtraCheese", boolExtraCheese},
+            {"boolExtraHam", boolExtraHam},
+            {"intAmount", intAmount}
+        }
+
+        Dim strReceipt As String = Receipt.formatReceipt(dictInputs, dictPrices, dblTotal)
+
+        Return strReceipt
+    End Function
 End Class

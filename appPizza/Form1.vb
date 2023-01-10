@@ -8,12 +8,14 @@
 
     'Select pizza size
     Private Sub radSmall_CheckedChanged(radButton As Object, e As EventArgs) Handles radSmall.CheckedChanged, radMedium.CheckedChanged, radLarge.CheckedChanged
-        'Added to prevent event from firing twice each time a size is selected
-        If Not radButton.Checked Then
-            Return
-        End If
-
-        objPizza.strPizzaSize = radButton.Text
+        Select Case True
+            Case radSmall.Checked
+                objPizza.strPizzaSize = radSmall.Text
+            Case radMedium.Checked
+                objPizza.strPizzaSize = radMedium.Text
+            Case radLarge.Checked
+                objPizza.strPizzaSize = radLarge.Text
+        End Select
     End Sub
 
     'Check for extra cheese
@@ -47,18 +49,36 @@
         objPizza.intAmount = Val(txtBox.Text)
     End Sub
 
-    'Check if order is valid and display total
+    'Display total and receipt
     Private Sub btnMakePizza_Click(sender As Object, e As EventArgs) Handles btnMakePizza.Click
         objPizza.calculateTotal()
 
+        'Check if pizza is valid
         If objPizza.boolValidPizza Then
+            'Display total and receipt
             lblTotal.Text = objPizza.calculateTotal()
+            lblReceipt.Text = objPizza.getReceipt()
         End If
     End Sub
 
     'Reset variables for the new pizza
     Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
         objPizza.reset()
+
+        'Clear form
+        lblReceipt.Text = ""
+        lblTotal.Text = ""
+
+        cboPizzaType.SelectedIndex = -1
+
+        radSmall.Checked = True
+        radMedium.Checked = False
+        radLarge.Checked = False
+
+        chkExtraCheese.Checked = False
+        chkExtraHam.Checked = False
+
+        txtAmount.Text = "1"
     End Sub
 
     'Debug

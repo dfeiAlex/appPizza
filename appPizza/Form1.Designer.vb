@@ -39,10 +39,8 @@ Partial Class Form1
         Me.grpOrderDetails = New System.Windows.Forms.GroupBox()
         Me.grpControls = New System.Windows.Forms.GroupBox()
         Me.lblCreateNewOrder = New System.Windows.Forms.Label()
-        Me.lblPrintReceipt = New System.Windows.Forms.Label()
         Me.lblLog = New System.Windows.Forms.Label()
         Me.btnNewOrder = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnLog = New System.Windows.Forms.Button()
         Me.grpReceipt = New System.Windows.Forms.GroupBox()
         Me.grpTotal = New System.Windows.Forms.GroupBox()
@@ -50,6 +48,7 @@ Partial Class Form1
         Me.lblTotalText = New System.Windows.Forms.Label()
         Me.pnlReceipt = New System.Windows.Forms.Panel()
         Me.lblReceipt = New System.Windows.Forms.Label()
+        Me.prtReceipt = New System.Drawing.Printing.PrintDocument()
         CType(Me.imgHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSizes.SuspendLayout()
         Me.grpExtraToppings.SuspendLayout()
@@ -186,6 +185,7 @@ Partial Class Form1
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.Size = New System.Drawing.Size(48, 20)
         Me.txtAmount.TabIndex = 5
+        Me.txtAmount.Text = "1"
         Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btnMakePizza
@@ -221,10 +221,8 @@ Partial Class Form1
         '
         Me.grpControls.BackColor = System.Drawing.SystemColors.Control
         Me.grpControls.Controls.Add(Me.lblCreateNewOrder)
-        Me.grpControls.Controls.Add(Me.lblPrintReceipt)
         Me.grpControls.Controls.Add(Me.lblLog)
         Me.grpControls.Controls.Add(Me.btnNewOrder)
-        Me.grpControls.Controls.Add(Me.btnPrint)
         Me.grpControls.Controls.Add(Me.btnLog)
         Me.grpControls.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpControls.Location = New System.Drawing.Point(210, 155)
@@ -237,27 +235,17 @@ Partial Class Form1
         'lblCreateNewOrder
         '
         Me.lblCreateNewOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCreateNewOrder.Location = New System.Drawing.Point(15, 73)
+        Me.lblCreateNewOrder.Location = New System.Drawing.Point(15, 26)
         Me.lblCreateNewOrder.Name = "lblCreateNewOrder"
         Me.lblCreateNewOrder.Size = New System.Drawing.Size(89, 13)
         Me.lblCreateNewOrder.TabIndex = 5
         Me.lblCreateNewOrder.Text = "Create new order"
         Me.lblCreateNewOrder.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'lblPrintReceipt
-        '
-        Me.lblPrintReceipt.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrintReceipt.Location = New System.Drawing.Point(15, 26)
-        Me.lblPrintReceipt.Name = "lblPrintReceipt"
-        Me.lblPrintReceipt.Size = New System.Drawing.Size(89, 13)
-        Me.lblPrintReceipt.TabIndex = 4
-        Me.lblPrintReceipt.Text = "Print receipt"
-        Me.lblPrintReceipt.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
         'lblLog
         '
         Me.lblLog.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLog.Location = New System.Drawing.Point(15, 293)
+        Me.lblLog.Location = New System.Drawing.Point(15, 75)
         Me.lblLog.Name = "lblLog"
         Me.lblLog.Size = New System.Drawing.Size(89, 13)
         Me.lblLog.TabIndex = 3
@@ -266,27 +254,17 @@ Partial Class Form1
         'btnNewOrder
         '
         Me.btnNewOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNewOrder.Location = New System.Drawing.Point(15, 89)
+        Me.btnNewOrder.Location = New System.Drawing.Point(15, 42)
         Me.btnNewOrder.Name = "btnNewOrder"
         Me.btnNewOrder.Size = New System.Drawing.Size(89, 21)
         Me.btnNewOrder.TabIndex = 2
         Me.btnNewOrder.Text = "New Order"
         Me.btnNewOrder.UseVisualStyleBackColor = True
         '
-        'btnPrint
-        '
-        Me.btnPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrint.Location = New System.Drawing.Point(15, 42)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(89, 21)
-        Me.btnPrint.TabIndex = 1
-        Me.btnPrint.Text = "Print"
-        Me.btnPrint.UseVisualStyleBackColor = True
-        '
         'btnLog
         '
         Me.btnLog.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLog.Location = New System.Drawing.Point(15, 309)
+        Me.btnLog.Location = New System.Drawing.Point(15, 91)
         Me.btnLog.Name = "btnLog"
         Me.btnLog.Size = New System.Drawing.Size(89, 21)
         Me.btnLog.TabIndex = 0
@@ -354,6 +332,7 @@ Partial Class Form1
         Me.lblReceipt.Name = "lblReceipt"
         Me.lblReceipt.Size = New System.Drawing.Size(0, 13)
         Me.lblReceipt.TabIndex = 0
+        Me.lblReceipt.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'Form1
         '
@@ -406,12 +385,11 @@ Partial Class Form1
     Friend WithEvents pnlReceipt As Panel
     Friend WithEvents lblReceipt As Label
     Friend WithEvents btnNewOrder As Button
-    Friend WithEvents btnPrint As Button
     Friend WithEvents btnLog As Button
     Friend WithEvents lblLog As Label
     Friend WithEvents lblCreateNewOrder As Label
-    Friend WithEvents lblPrintReceipt As Label
     Friend WithEvents grpTotal As GroupBox
     Friend WithEvents lblTotalText As Label
     Friend WithEvents lblTotal As Label
+    Friend WithEvents prtReceipt As Printing.PrintDocument
 End Class
