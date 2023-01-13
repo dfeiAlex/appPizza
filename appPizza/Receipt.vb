@@ -42,7 +42,7 @@ Module Receipt
             strReceipt += $"{"- Extra Cheese",-23}{formatPrice(dictPriceList("Extra Cheese")),11}" + nl
         End If
 
-        strReceipt += nl
+        strReceipt += nl + nl
 
         strReceipt += "----------------------------------" + nl
 

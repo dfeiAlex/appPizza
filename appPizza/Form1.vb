@@ -44,6 +44,9 @@
             End If
 
             txtBox.Select(txtBox.Text.Length, 0)
+        Else
+            MessageBox.Show("Enter the number of pizzas!", "Mama Mia", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
         End If
 
         objPizza.intAmount = Val(txtBox.Text)
